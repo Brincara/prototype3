@@ -1,1 +1,42 @@
-body { font-family: Arial; background-color: #f0f0f0; }
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 20px;
+  background-color: #f9f9f9;
+  color: #333;
+}
+
+h1, h2 {
+  color: #444;
+}
+
+#color-text {
+  font-size: 28px;
+  font-weight: bold;
+  margin: 10px 0;
+}
+
+.color-button {
+  padding: 10px 20px;
+  margin: 5px;
+  border: none;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+#feedback {
+  font-size: 18px;
+  font-weight: bold;
+  margin: 10px 0;
+}
+
+#score {
+  font-size: 16px;
+  margin: 10px 0;
+}
+
+#restart-button {
+  margin-top: 10px;
+  padding: 10px;
+}

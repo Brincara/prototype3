@@ -1,46 +1,81 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Brincara Mind Lite Prototype - Day 6</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Stroop Test - Brincara Mind Lite</title>
+    <style>
+        body { font-family: sans-serif; text-align: center; margin-top: 50px; }
+        .color-button { font-size: 24px; padding: 10px 20px; margin: 10px; }
+        .score { font-size: 20px; margin-top: 20px; }
+    </style>
 </head>
 <body>
-    <header>
-        <h1>Brincara Mind Lite Prototype</h1>
-        <p>Language: English (Português em breve)</p>
-    </header>
+    <h1>Stroop Test (Prefrontal Cortex)</h1>
+    <h2 id="word-display">Color</h2>
+    <div id="buttons"></div>
+    <div class="score" id="score-display">Score: 0/0</div>
+    <div class="score" id="final-score" style="display:none;"></div>
 
-    <section id="test">
-        <h2>🧠 Test 1: Stroop Test (Prefrontal Cortex)</h2>
-        <div id="stroop-container">
-            <p id="stroop-word" class="stroop-text">Red</p>
-            <div id="color-buttons">
-                <button onclick="checkColor('red')">Red</button>
-                <button onclick="checkColor('blue')">Blue</button>
-                <button onclick="checkColor('green')">Green</button>
-                <button onclick="checkColor('yellow')">Yellow</button>
-            </div>
-            <p id="result-message"></p>
-        </div>
-    </section>
+    <script>
+        const colors = ["Red", "Blue", "Green", "Yellow"];
+        const colorValues = ["red", "blue", "green", "gold"];
+        let currentColor = "";
+        let correctColor = "";
+        let score = 0;
+        let attempts = 0;
+        const maxAttempts = 10;
 
-    <section id="game">
-        <h2>🎮 Game 1: Sea Fortress Clone (Coming soon)</h2>
-        <p>🛠️ We're building a clinically inspired version of Sea Fortress specifically for Brincara users.</p>
-    </section>
+        function getRandomInt(max) {
+            return Math.floor(Math.random() * max);
+        }
 
-    <section id="feedback">
-        <h2>📬 We'd Love Your Feedback!</h2>
-        <p>Thank you for trying our early Brincara Mind prototype. Please share your suggestions or ideas for improvement by emailing:</p>
-        <p><strong>elena@brincara.com</strong></p>
-        <p>💌 The first 100 users to reply will be offered exclusive free access when we launch.</p>
-    </section>
+        function nextRound() {
+            const wordIndex = getRandomInt(colors.length);
+            const colorIndex = getRandomInt(colors.length);
+            correctColor = colorValues[colorIndex];
+            currentColor = colors[wordIndex];
 
-    <footer>
-        <p>Brincara © All rights reserved</p>
-    </footer>
+            const display = document.getElementById("word-display");
+            display.textContent = currentColor;
+            display.style.color = correctColor;
 
-    <script src="stroop.js"></script>
+            const buttons = document.getElementById("buttons");
+            buttons.innerHTML = "";
+
+            colorValues.forEach((val, index) => {
+                const btn = document.createElement("button");
+                btn.textContent = colors[index];
+                btn.className = "color-button";
+                btn.onclick = () => checkAnswer(val);
+                buttons.appendChild(btn);
+            });
+        }
+
+        function checkAnswer(selectedColor) {
+            attempts++;
+            if (selectedColor === correctColor) {
+                score++;
+                alert("Correct!");
+            } else {
+                alert("Wrong!");
+            }
+            updateScore();
+            if (attempts < maxAttempts) {
+                nextRound();
+            } else {
+                document.getElementById("final-score").style.display = "block";
+                document.getElementById("final-score").textContent = `Final Score: ${score}/${maxAttempts}`;
+                document.getElementById("buttons").style.display = "none";
+                document.getElementById("word-display").style.display = "none";
+            }
+        }
+
+        function updateScore() {
+            document.getElementById("score-display").textContent = `Score: ${score}/${attempts}`;
+        }
+
+        nextRound();
+    </script>
 </body>
 </html>

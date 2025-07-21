@@ -1,27 +1,30 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Brincara Mind Lite Prototype</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
-  <header>
+  <div class="container">
     <h1>Brincara Mind Lite Prototype</h1>
-    <p>Language: English (Português em breve)</p>
-  </header>
+    <p><strong>Language:</strong> English (Português em breve)</p>
 
-  <main>
     <section class="test">
       <h2>🧠 Test 1: Stroop Test (Prefrontal Cortex)</h2>
+      <p class="instruction"><strong>INSTRUCTIONS:</strong> Match the <em>color of the word</em> (not the word itself) by clicking the correct color button below. Example: If the word says ‘Blue’ but appears in red, click the <strong>Red</strong> button.</p>
       <div id="stroop-container">
-        <p id="color-text">Loading...</p>
-        <div id="button-container"></div>
-        <p id="feedback"></p>
-        <p id="score">Score: 0/0</p>
-        <button id="restart-button" style="display: none;">🔁 Restart Test</button>
+        <div id="stroop-word">Ready?</div>
+        <div id="stroop-buttons">
+          <button class="color-btn" data-color="red">Red</button>
+          <button class="color-btn" data-color="blue">Blue</button>
+          <button class="color-btn" data-color="green">Green</button>
+          <button class="color-btn" data-color="yellow">Yellow</button>
+        </div>
+        <div id="stroop-feedback"></div>
+        <div id="stroop-score"></div>
+        <button id="restart-btn" style="display:none;">Start Again</button>
       </div>
     </section>
 
@@ -31,17 +34,16 @@
     </section>
 
     <section class="feedback">
-      <h2>📬 We'd Love Your Feedback!</h2>
+      <h3>📬 We'd Love Your Feedback!</h3>
       <p>Thank you for trying our early Brincara Mind prototype. Please share your suggestions or ideas for improvement by emailing:</p>
       <p><strong>elena@brincara.com</strong></p>
       <p>💌 The first 100 users to reply will be offered exclusive free access when we launch.</p>
     </section>
-  </main>
 
-  <footer>
-    <p>Brincara © All rights reserved</p>
-  </footer>
-
+    <footer>
+      <p>Brincara © All rights reserved</p>
+    </footer>
+  </div>
   <script src="stroop.js"></script>
 </body>
 </html>

@@ -1,1 +1,110 @@
-<!DOCTYPE html><html><head><title>Brincara Day 6</title></head><body><h1>Prototype Placeholder</h1></body></html>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Brincara Mind Lite Prototype</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>Brincara Mind Lite Prototype</h1>
+    <p>Language: English (Português em breve)</p>
+  </header>
+
+  <section id="stroop-test-section">
+    <h2>🧠 Test 1: Stroop Test (Prefrontal Cortex)</h2>
+    <p id="color-name" style="font-size: 24px; font-weight: bold;">Yellow</p>
+    <div id="buttons-container">
+      <button class="color-button" data-color="Red">Red</button>
+      <button class="color-button" data-color="Blue">Blue</button>
+      <button class="color-button" data-color="Green">Green</button>
+      <button class="color-button" data-color="Yellow">Yellow</button>
+    </div>
+    <p id="feedback"></p>
+    <p id="score-display">Score: 0/0</p>
+    <button id="restart-button" style="display: none;">Restart Test</button>
+  </section>
+
+  <section id="game-section">
+    <h2>🎮 Game 1: Sea Fortress Clone (Coming soon)</h2>
+    <p>🛠️ We're building a clinically inspired version of Sea Fortress specifically for Brincara users.</p>
+  </section>
+
+  <section id="feedback-section">
+    <h2>📬 We'd Love Your Feedback!</h2>
+    <p>Thank you for trying our early Brincara Mind prototype. Please share your suggestions or ideas for improvement by emailing:</p>
+    <p><strong>elena@brincara.com</strong></p>
+    <p>💌 The first 100 users to reply will be offered exclusive free access when we launch.</p>
+  </section>
+
+  <footer>
+    <p>Brincara © All rights reserved</p>
+  </footer>
+
+  <script>
+    const colors = ["Red", "Blue", "Green", "Yellow"];
+    const colorNameElement = document.getElementById("color-name");
+    const feedbackElement = document.getElementById("feedback");
+    const scoreDisplay = document.getElementById("score-display");
+    const restartButton = document.getElementById("restart-button");
+    const buttons = document.querySelectorAll(".color-button");
+
+    let currentColor = "";
+    let score = 0;
+    let total = 0;
+    let maxTrials = 10;
+
+    function nextTrial() {
+      const randomColor = colors[Math.floor(Math.random() * colors.length)];
+      colorNameElement.textContent = randomColor;
+      currentColor = randomColor;
+    }
+
+    function endTest() {
+      colorNameElement.style.display = "none";
+      document.getElementById("buttons-container").style.display = "none";
+      feedbackElement.textContent = `Test complete. Final score: ${score}/${maxTrials}`;
+      restartButton.style.display = "inline-block";
+    }
+
+    buttons.forEach(button => {
+      button.addEventListener("click", () => {
+        if (total >= maxTrials) return;
+
+        const selected = button.getAttribute("data-color");
+        if (selected === currentColor) {
+          feedbackElement.textContent = "✅ Correct!";
+          score++;
+        } else {
+          feedbackElement.textContent = "❌ Wrong!";
+        }
+
+        total++;
+        scoreDisplay.textContent = `Score: ${score}/${total}`;
+
+        if (total < maxTrials) {
+          nextTrial();
+        } else {
+          endTest();
+        }
+      });
+    });
+
+    restartButton.addEventListener("click", () => {
+      score = 0;
+      total = 0;
+      colorNameElement.style.display = "block";
+      document.getElementById("buttons-container").style.display = "flex";
+      restartButton.style.display = "none";
+      feedbackElement.textContent = "";
+      scoreDisplay.textContent = `Score: 0/0`;
+      nextTrial();
+    });
+
+    // Initialize
+    nextTrial();
+  </script>
+</body>
+</html>

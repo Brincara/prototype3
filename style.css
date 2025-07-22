@@ -1,44 +1,31 @@
+
 body {
-  font-family: Arial, sans-serif;
-  background: #fff;
-  color: #222;
+  font-family: sans-serif;
   margin: 0;
-  padding: 1em;
+  padding: 2rem;
+  background: #f9f9f9;
 }
 .container {
-  max-width: 700px;
-  margin: auto;
+  max-width: 800px;
+  margin: 0 auto;
 }
 h1, h2, h3 {
-  color: #003366;
+  color: #2a2a2a;
 }
-#stroop-word {
-  font-size: 2em;
-  margin: 20px 0;
+.instructions {
+  font-size: 0.95rem;
+  margin-bottom: 1rem;
 }
-#stroop-buttons {
-  margin-bottom: 10px;
+#stroop-test, #game-grid {
+  margin-top: 1rem;
 }
-.color-btn {
-  padding: 10px 20px;
-  margin: 5px;
-  font-size: 1em;
-  color: white;
+button {
+  padding: 0.6rem 1.2rem;
+  margin: 0.3rem;
   border: none;
-  border-radius: 6px;
-  cursor: pointer;
+  border-radius: 4px;
+  font-size: 1rem;
 }
-.color-btn[data-color="red"] { background-color: red; }
-.color-btn[data-color="blue"] { background-color: blue; }
-.color-btn[data-color="green"] { background-color: green; }
-.color-btn[data-color="yellow"] { background-color: goldenrod; }
-#stroop-feedback, #stroop-score {
-  font-weight: bold;
-  margin: 10px 0;
-}
-footer {
-  margin-top: 50px;
-  text-align: center;
-  font-size: 0.9em;
-  color: #888;
+#restart-game {
+  margin-top: 1rem;
 }

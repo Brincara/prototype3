@@ -3,37 +3,33 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Brincara Mind Lite Prototype</title>
-  <link rel="stylesheet" href="style.css"/>
+  <title>Brincara Mind Lite Prototype - Day 7</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <div class="container">
     <h1>Brincara Mind Lite Prototype</h1>
     <p><strong>Language:</strong> English (Português em breve)</p>
 
-    <section class="test">
+    <section class="test-section">
       <h2>🧠 Test 1: Stroop Test (Prefrontal Cortex)</h2>
-      <p class="instruction"><strong>INSTRUCTIONS:</strong> Match the <em>color of the word</em> (not the word itself) by clicking the correct color button below. Example: If the word says ‘Blue’ but appears in red, click the <strong>Red</strong> button.</p>
-      <div id="stroop-container">
-        <div id="stroop-word">Ready?</div>
-        <div id="stroop-buttons">
-          <button class="color-btn" data-color="red">Red</button>
-          <button class="color-btn" data-color="blue">Blue</button>
-          <button class="color-btn" data-color="green">Green</button>
-          <button class="color-btn" data-color="yellow">Yellow</button>
-        </div>
-        <div id="stroop-feedback"></div>
-        <div id="stroop-score"></div>
-        <button id="restart-btn" style="display:none;">Start Again</button>
+      <p class="instructions">INSTRUCTIONS: Match the color of the word (not the word itself) by clicking the correct color button below.</p>
+      <div id="stroop-test">
+        <!-- Stroop test content will be injected by JavaScript -->
       </div>
     </section>
 
-    <section class="game">
-      <h2>🎮 Game 1: Sea Fortress Clone (Coming soon)</h2>
-      <p>🛠️ We're building a clinically inspired version of Sea Fortress specifically for Brincara users.</p>
+    <section class="game-section">
+      <h2>🎮 Game 1: Sea Fortress Clone (Prefrontal Cortex)</h2>
+      <p class="instructions">INSTRUCTIONS: Tap on the Sea Fortress targets (⚓) while ignoring decoys (🪨). The game ends after 5 rounds.</p>
+      <div id="sea-fortress-game">
+        <div id="game-grid"></div>
+        <button id="restart-game">Restart Game</button>
+        <p id="score-display"></p>
+      </div>
     </section>
 
-    <section class="feedback">
+    <section class="feedback-section">
       <h3>📬 We'd Love Your Feedback!</h3>
       <p>Thank you for trying our early Brincara Mind prototype. Please share your suggestions or ideas for improvement by emailing:</p>
       <p><strong>elena@brincara.com</strong></p>
@@ -45,5 +41,6 @@
     </footer>
   </div>
   <script src="stroop.js"></script>
+  <script src="sea-fortress.js"></script>
 </body>
 </html>

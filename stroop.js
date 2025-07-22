@@ -1,63 +1,55 @@
-const colors = ['red', 'blue', 'green', 'yellow'];
-let currentColor = '';
-let currentText = '';
-let score = 0;
-let attempts = 0;
 
-function getRandomColor() {
-  return colors[Math.floor(Math.random() * colors.length)];
+const words = ["Red", "Blue", "Green", "Yellow"];
+const colors = ["Red", "Blue", "Green", "Yellow"];
+let currentTrial = 0;
+let correctCount = 0;
+
+const colorWord = document.getElementById("color-word");
+const buttons = document.querySelectorAll(".color-button");
+const scoreDisplay = document.getElementById("stroop-score");
+const restartBtn = document.getElementById("restart-stroop");
+
+function getRandomElement(arr) {
+  return arr[Math.floor(Math.random() * arr.length)];
 }
 
-function displayWord() {
-  currentColor = getRandomColor();
-  currentText = getRandomColor();
-  const wordElement = document.getElementById('stroop-word');
-  wordElement.textContent = currentText;
-  wordElement.style.color = currentColor;
+function displayNewTrial() {
+  const word = getRandomElement(words);
+  const color = getRandomElement(colors);
+  colorWord.textContent = word;
+  colorWord.style.color = color.toLowerCase();
+  colorWord.setAttribute("data-answer", color);
 }
 
-function handleButtonClick(event) {
-  const selectedColor = event.target.getAttribute('data-color');
-  const feedback = document.getElementById('stroop-feedback');
-  const scoreElement = document.getElementById('stroop-score');
-  const restartBtn = document.getElementById('restart-btn');
-
-  if (selectedColor === currentColor) {
-    score++;
-    feedback.textContent = "✅ Correct!";
-  } else {
-    feedback.textContent = "❌ Wrong!";
-  }
-
-  attempts++;
-  scoreElement.textContent = `Score: ${score}/${attempts}`;
-
-  if (attempts === 10) {
-    feedback.textContent += ` Final Score: ${score}/10`;
-    document.querySelectorAll('.color-btn').forEach(btn => btn.disabled = true);
-    restartBtn.style.display = 'inline-block';
-  } else {
-    setTimeout(() => {
-      feedback.textContent = '';
-      displayWord();
-    }, 600);
-  }
+function endTest() {
+  colorWord.textContent = "Test complete!";
+  buttons.forEach(btn => btn.disabled = true);
+  restartBtn.style.display = "inline-block";
 }
 
-function restartTest() {
-  score = 0;
-  attempts = 0;
-  document.getElementById('stroop-score').textContent = '';
-  document.getElementById('stroop-feedback').textContent = '';
-  document.querySelectorAll('.color-btn').forEach(btn => btn.disabled = false);
-  document.getElementById('restart-btn').style.display = 'none';
-  displayWord();
-}
-
-document.querySelectorAll('.color-btn').forEach(btn => {
-  btn.addEventListener('click', handleButtonClick);
+buttons.forEach(btn => {
+  btn.addEventListener("click", () => {
+    const correctColor = colorWord.getAttribute("data-answer");
+    if (btn.getAttribute("data-color") === correctColor) {
+      correctCount++;
+    }
+    currentTrial++;
+    scoreDisplay.textContent = `Score: ${correctCount}/${currentTrial}`;
+    if (currentTrial < 10) {
+      displayNewTrial();
+    } else {
+      endTest();
+    }
+  });
 });
 
-document.getElementById('restart-btn').addEventListener('click', restartTest);
+restartBtn.addEventListener("click", () => {
+  currentTrial = 0;
+  correctCount = 0;
+  scoreDisplay.textContent = "Score: 0/0";
+  buttons.forEach(btn => btn.disabled = false);
+  restartBtn.style.display = "none";
+  displayNewTrial();
+});
 
-window.onload = displayWord;
+displayNewTrial();

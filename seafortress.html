@@ -1,0 +1,38 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Sea Fortress Game</title>
+  <style>
+    body { font-family: sans-serif; text-align: center; padding: 20px; }
+    .game-image { font-size: 80px; }
+    .game-options button { margin: 10px; font-size: 20px; }
+  </style>
+</head>
+<body>
+  <h2>Sea Fortress Game</h2>
+  <p>How many ships do you see?</p>
+  <div class="game-image" id="ships">🛳️🛳️🛳️</div>
+  <div class="game-options">
+    <button onclick="checkAnswer(2)">2</button>
+    <button onclick="checkAnswer(3)">3</button>
+    <button onclick="checkAnswer(4)">4</button>
+  </div>
+  <p id="game-result"></p>
+
+  <script>
+    const shipsEl = document.getElementById('ships');
+    const resultEl = document.getElementById('game-result');
+    let correct = 3;
+
+    function checkAnswer(answer) {
+      if (answer === correct) {
+        resultEl.textContent = "✅ Correct!";
+      } else {
+        resultEl.textContent = "❌ Try Again!";
+      }
+    }
+  </script>
+</body>
+</html>

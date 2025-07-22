@@ -1,41 +1,30 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Brincara Mind Lite Prototype</title>
-  <link rel="stylesheet" href="style.css"/>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <main>
+  <div class="container">
     <h1>Brincara Mind Lite Prototype</h1>
-    <p class="language">Language: English (Português em breve)</p>
+    <p>Language: English (Português em breve)</p>
 
     <section class="test-section">
       <h2>🧠 Test 1: Stroop Test (Prefrontal Cortex)</h2>
-      <p class="instructions">INSTRUCTIONS: Match the color of the word (not the word itself) by clicking the correct color button below. Example: If the word says ‘Blue’ but appears in red, click the Red button.</p>
-      <div id="stroop-container">
-        <div id="color-word">Loading...</div>
-        <div id="color-buttons">
-          <button class="color-button" data-color="Red">Red</button>
-          <button class="color-button" data-color="Blue">Blue</button>
-          <button class="color-button" data-color="Green">Green</button>
-          <button class="color-button" data-color="Yellow">Yellow</button>
-        </div>
-        <div id="stroop-score">Score: 0/0</div>
-        <button id="restart-stroop" style="display:none;">Restart Test</button>
-      </div>
+      <p><strong>INSTRUCTIONS:</strong> Match the color of the word (not the word itself) by clicking the correct color button below. Example: If the word says ‘Blue’ but appears in red, click the Red button.</p>
+      <div id="stroop-test-container"></div>
     </section>
 
     <section class="game-section">
-      <h2>🎮 Game 1: Sea Fortress Clone (Parietal Lobe)</h2>
-      <p class="instructions">INSTRUCTIONS: Match the number of enemy ships shown to the correct count. Tap the button that matches the total.</p>
-      <iframe src="seafortress.html" width="100%" height="400" style="border:none;"></iframe>
+      <h2>🎮 Game 1: Sea Fortress Clone (Prefrontal Cortex)</h2>
+      <p><strong>INSTRUCTIONS:</strong> Match the number of enemy ships shown to the correct count. Tap the button that matches the total.</p>
+      <div id="sea-fortress-container"></div>
     </section>
 
     <section class="feedback-section">
-      <h2>📬 We'd Love Your Feedback!</h2>
+      <h3>📬 We'd Love Your Feedback!</h3>
       <p>Thank you for trying our early Brincara Mind prototype. Please share your suggestions or ideas for improvement by emailing:</p>
       <p><strong>elena@brincara.com</strong></p>
       <p>💌 The first 100 users to reply will be offered exclusive free access when we launch.</p>
@@ -44,8 +33,9 @@
     <footer>
       <p>Brincara © All rights reserved</p>
     </footer>
-  </main>
 
-  <script src="stroop.js"></script>
+    <script src="stroop.js"></script>
+    <script src="sea-fortress.js"></script>
+  </div>
 </body>
 </html>

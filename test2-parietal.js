@@ -1,1 +1,0 @@
-// Block Design Test JS (Parietal Lobe)

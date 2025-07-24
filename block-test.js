@@ -1,40 +1,35 @@
 
-// block-test.js — Block Design-Inspired Test (Parietal Lobe)
-let currentRound = 0;
+// block-test.js — Clickable Block Design Test
+
+let currentRound = 1;
 let totalRounds = 10;
 let score = 0;
-let test2Started = false;
 
-function startBlockTest() {
-    currentRound = 0;
-    score = 0;
-    test2Started = true;
-    document.getElementById("block-result").innerText = "";
-    nextBlockRound();
+function rotateBlock() {
+  const feedback = document.getElementById("block-feedback");
+  feedback.innerText = "Block rotated (simulated).";
 }
 
-function nextBlockRound() {
-    if (currentRound >= totalRounds) {
-        document.getElementById("block-result").innerText =
-            "Test completed! Your score: " + score + "/" + totalRounds;
-        document.getElementById("restart-block-test").style.display = "inline-block";
-        document.getElementById("cta-button").style.display = "block";
-        return;
-    }
-
-    // Simulate a new shape round (Placeholder logic)
-    document.getElementById("block-target").innerText = "Target Shape " + (currentRound + 1);
+function placeBlock() {
+  const feedback = document.getElementById("block-feedback");
+  if (currentRound <= totalRounds) {
+    feedback.innerText = "Shape placed correctly (simulated) for round " + currentRound + ".";
+    score++;
     currentRound++;
-}
-
-function submitBlockAnswer(isCorrect) {
-    if (!test2Started) return;
-    if (isCorrect) score++;
-    nextBlockRound();
+    document.getElementById("block-target").innerText = "Target Shape " + currentRound;
+    if (currentRound > totalRounds) {
+      feedback.innerText = "Test completed! Final score: " + score + "/" + totalRounds;
+      document.getElementById("restart-block-test").style.display = "inline-block";
+      document.getElementById("cta-button").style.display = "block";
+    }
+  }
 }
 
 function restartBlockTest() {
-    startBlockTest();
-    document.getElementById("restart-block-test").style.display = "none";
-    document.getElementById("cta-button").style.display = "none";
+  currentRound = 1;
+  score = 0;
+  document.getElementById("block-feedback").innerText = "";
+  document.getElementById("block-target").innerText = "Target Shape 1";
+  document.getElementById("cta-button").style.display = "none";
+  document.getElementById("restart-block-test").style.display = "none";
 }

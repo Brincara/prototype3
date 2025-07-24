@@ -4,8 +4,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Brincara Mind Lite Prototype - Day 11</title>
-  <link rel="stylesheet" href="style.css" />
+  <title>Brincara Mind Lite Prototype - Day 11.1</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; }
+    .instructions { font-weight: bold; font-size: 1rem; margin-bottom: 10px; }
+    .grids { display: flex; gap: 40px; margin: 20px 0; }
+  </style>
 </head>
 <body>
   <main>
@@ -17,14 +21,14 @@
       <p><strong>🧠 Role of Prefrontal Cortex:</strong><br>
       The prefrontal cortex helps you focus, manage tasks, and control impulses.<br>
       It's vital for decision-making and attention in daily life.</p>
-      <p class="instructions"><strong>INSTRUCTIONS:</strong> Match the color of the word (not the word itself) by clicking the correct color button below. Example: If the word says ‘Blue’ but appears in red, click the Red button.</p>
-      <div id="stroop-container"></div>
+      <p class="instructions">INSTRUCTIONS: Match the color of the word (not the word itself) by clicking the correct color button below.</p>
+      <div id="stroop-container">(Test 1 not interactive in this demo)</div>
     </section>
 
     <section>
       <h2>🎮 Game 1: Sea Fortress Clone (Prefrontal Cortex)</h2>
-      <p class="instructions"><strong>INSTRUCTIONS:</strong> Match the number of enemy ships shown to the correct count. Tap the button that matches the total.</p>
-      <div id="sea-fortress-container"></div>
+      <p class="instructions">INSTRUCTIONS: Match the number of enemy ships shown to the correct count. Tap the button that matches the total.</p>
+      <div id="sea-fortress-container">(Game 1 not interactive in this demo)</div>
     </section>
 
     <section>
@@ -32,11 +36,20 @@
       <p><strong>🧠 Role of Parietal Lobe:</strong><br>
       The parietal lobe supports spatial awareness and visual reasoning.<br>
       It helps you judge shapes, patterns, and how things fit together.</p>
-      <p class="instructions"><strong>INSTRUCTIONS:</strong> Recreate the shape shown by selecting and rotating blocks into position.</p>
-      <div id="block-target">Target Shape 1</div>
-      <div id="block-controls">
-        <button onclick="rotateBlock()">Rotate</button>
-        <button onclick="placeBlock()">Place</button>
+      <p class="instructions">INSTRUCTIONS: Recreate the shape shown by selecting and rotating blocks into position.</p>
+      <div class="grids">
+        <div>
+          <h4>🎯 Target Shape</h4>
+          <div id="target-grid"></div>
+        </div>
+        <div>
+          <h4>🧩 Your Shape</h4>
+          <div id="player-grid"></div>
+        </div>
+      </div>
+      <div>
+        <button onclick="rotateBlock()">🔄 Rotate</button>
+        <button onclick="placeBlock()">✅ Place</button>
       </div>
       <p id="block-feedback"></p>
       <button id="restart-block-test" onclick="restartBlockTest()" style="display:none;">Restart Test</button>
@@ -45,21 +58,7 @@
         <p>Explore your personalized game recommendation and feedback summary.</p>
       </div>
     </section>
-
-    <section>
-      <h3>📬 We'd Love Your Feedback!</h3>
-      <p>Thank you for trying our early Brincara Mind prototype. Please share your suggestions or ideas for improvement by emailing:</p>
-      <p><strong>elena@brincara.com</strong></p>
-      <p>💌 The first 100 users to reply will be offered exclusive free access when we launch.</p>
-    </section>
-
-    <footer>
-      <p>Brincara © All rights reserved</p>
-    </footer>
   </main>
-
-  <script src="stroop.js"></script>
-  <script src="sea-fortress.js"></script>
   <script src="block-test.js"></script>
 </body>
 </html>
